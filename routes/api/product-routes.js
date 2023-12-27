@@ -29,22 +29,8 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', async (req, res) => {
-  try {
-    const { product_name, price, stock, tagId } = req.body;
+router.post('/', (req, res) => {
 
-    const productData = await Product.create({
-      product_name: product_name,
-      price: price,
-      stock: stock,
-      tagId: tagId
-    });
-
-    res.status(200).json(productData);
-  } catch (err) {
-    res.status(500).json(err);
-  } 
-});
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -73,6 +59,7 @@ router.post('/', async (req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
+  });
 
 // update product
 router.put('/:id', (req, res) => {
